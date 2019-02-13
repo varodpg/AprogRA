@@ -11,26 +11,23 @@ public class CambiarCanvas : MonoBehaviour
     public Rigidbody car;
     private Vector3 posicionFinal;
     private int contador = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasGame.GetComponent<Canvas>().enabled = true;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
-        //foreach (Canvas i in canvasFlechas.gameObject.GetComponentsInChildren<Canvas>())
-        //{
-        //    i.enabled = false;
-        //}
+     
     }
 
-    // Update is called once per frame
     public void changeWin()
     {
         canvasGame.GetComponent<Canvas>().enabled = false;
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = true;
         canvasChoque.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("WinIcon").SetActive(false);
     }
     public void showCrashCanvas()
     {
@@ -290,6 +287,9 @@ public class CambiarCanvas : MonoBehaviour
     {
         //mostramos un canvas de error al no haber direcciones agragadas
     }
+    public void moveStar(Rigidbody star)
+    {
+        star.transform.RotateAround(star.transform.position, new Vector3(0,1,0), Time.deltaTime * 90f);
+    }
 
-    
 }

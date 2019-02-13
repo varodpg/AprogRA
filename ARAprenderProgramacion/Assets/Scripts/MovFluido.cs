@@ -6,6 +6,7 @@ public class MovFluido : MonoBehaviour
 {
     // Start is called before the first frame update
     public Ejecutar ejecutar;
+    public Rigidbody coche;
     public void Start()
     {
         
@@ -14,11 +15,12 @@ public class MovFluido : MonoBehaviour
     // Update is called once per frame
     public void FixedUpdate()
     {
-        //ejecutar.setPosActual( new Vector3(ejecutar.car.transform.position.x, ejecutar.car.transform.position.y, ejecutar.car.transform.position.z));
-        //Quaternion deltaRotation = Quaternion.Euler(ejecutar.getEuler() * Time.deltaTime);
-        //ejecutar.car.MoveRotation(ejecutar.car.rotation * deltaRotation);
-        ejecutar.car.transform.Rotate(Vector3.up, -90);
-        //ejecutar.car.MovePosition(Vector3.MoveTowards(ejecutar.getPosActual(), ejecutar.getPosDestino(), 3) * Time.deltaTime);
+
+        //ejecutar.car.MovePosition(Vector3.MoveTowards(ejecutar.posActual, ejecutar.posDestino, 1));
+        //ejecutar.arrancar(ejecutar.car);
+        
+        
+        
     }
 
     public void turnLeft()

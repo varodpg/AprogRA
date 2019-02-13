@@ -11,18 +11,20 @@ public class Ejecutar : MonoBehaviour
     public Rigidbody car, star;
     public ArrayList direcciones;
     public Button botonEjecutar;
-    public WaitSeconds wait;
-    private Vector3 posActual, posDestino, rotacionActual;
+    public Vector3 posActual, posDestino, rotacionActual;
     Vector3 m_EulerAngleVelocity;
     private MovFluido mov;
-    private bool mover = false;
+    public bool mover = false;
     Vector3 pos;
+    private int dir = 0;
+
+   
 
 
     void Start()
     {
         botonEjecutar.onClick.AddListener(NewMethod);
-
+        posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
 
     }
 
@@ -111,21 +113,12 @@ public class Ejecutar : MonoBehaviour
                 switch (dirs[i])
                 {
                     case 1: //arriba
-                                                   
-                            
-                            posDestino = new Vector3(car.transform.position.x, car.transform.position.y, posActual.z + (1.3f * 0.3f));
-                            m_EulerAngleVelocity = new Vector3(0, 100, 0);
-                                //mov.Start();// FixedUpdate();
-                                            //car.transform.Rotate(0, -90, 0);
-
-                            
-                            
-
-
-
-
+                        posDestino = new Vector3(car.transform.position.x, car.transform.position.y, posActual.z + (1.3f * 0.3f));
+                        m_EulerAngleVelocity = new Vector3(0, 100, 0);
+                        dir = 1;
                         break;
                     case 2: //derecha
+                        dir = 2;
                         posDestino = new Vector3(posActual.x + (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
                         m_EulerAngleVelocity = new Vector3(0, 100, 0);
                         Debug.Log("Angulo: "+car.transform.rotation.eulerAngles.y);
@@ -137,16 +130,20 @@ public class Ejecutar : MonoBehaviour
                         {
                             car.transform.Rotate(Vector3.up, 90);
                         }
-                        star.MovePosition(Vector3.MoveTowards(new Vector3(star.transform.position.x, star.transform.position.y, star.transform.position.z), new Vector3 (star.transform.position.x +0.5f, star.transform.position.y, star.transform.position.z), 1));
 
+                        mover = true;
+                        //posActual = posDestino;
+                        
                         break;
                     case 3: //abajo
-                        posDestino = new Vector3(posActual.x - (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
+                        dir = 3;
+                        posDestino = new Vector3(posActual.x , car.transform.position.y, car.transform.position.z - (1.3f * 0.3f));
                         
                       
                         break;
                     case 4: //izquierda
-                        posDestino = new Vector3(posActual.x - (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
+                        dir = 4;
+                        posDestino = new Vector3(posActual.x , car.transform.position.y, car.transform.position.z +(1.3f * 0.3f));
         
                         
                         break;
@@ -154,8 +151,8 @@ public class Ejecutar : MonoBehaviour
                         break; // podemos mostrar un mensaje por pantalla diciendo que no hay ningún movimiento.
                 }
                 //car.MovePosition(Vector3.MoveTowards(posActual, posDestino, 1));
-                posActual = posDestino;
-                mover = true;
+               
+                
 
             }
         }
@@ -167,26 +164,20 @@ public class Ejecutar : MonoBehaviour
 
     }
 
+ 
+
     private void FixedUpdate()
     {
-        if (mover)
-        {
+       
+        if (mover == true) {
+            car.transform.position = car.transform.position + (new Vector3(0.002f,0,0));
+            posActual = car.transform.position;
+            if (posActual == posDestino)
+            {
+                mover = false;
+            }
             
-            car.MovePosition(Vector3.MoveTowards(posActual, posDestino,Time.deltaTime * 0.001f));
-            //pos = Vector3.Lerp(posActual, posDestino, 0.0000001f);
-            star.MovePosition(Vector3.Lerp(posActual, posDestino, 0.0000001f)); ///NO FUNCIONAAAAA
-
-
         }
-        mover = false;
     }
-
-    //private void FixedUpdate()
-    //{
-    //    posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
-    //    Quaternion deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * Time.deltaTime);
-    //    car.MoveRotation(car.rotation * deltaRotation);
-    //    car.MovePosition(Vector3.MoveTowards(posActual, posDestino, 3)* Time.deltaTime);
-    //}
 
 }
