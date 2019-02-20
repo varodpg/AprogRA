@@ -14,11 +14,13 @@ public class Ejecutar : MonoBehaviour
     public Vector3 posActual, posDestino;
     public Quaternion rotacionDestino, rotacionInicial;
     Vector3 m_EulerAngleVelocity;
-    private MovFluido mov;
     public bool mover = false;
     private bool continuar = false;
+    public bool choque = true;
     Vector3 pos;
     private int dir = 0;
+    public NoDirScript noDirScript;
+    public CambiarCanvas cc;
 
 
 
@@ -26,6 +28,7 @@ public class Ejecutar : MonoBehaviour
     void Start()
     {
         botonEjecutar.onClick.AddListener(NewMethod);
+        m_EulerAngleVelocity = new Vector3(0, 100, 0);
     }
 
     private void NewMethod()
@@ -70,141 +73,160 @@ public class Ejecutar : MonoBehaviour
         }
         Debug.Log("Fin del array");
     }
+
     public void ejecutarMovimiento(ArrayList dirs) // (1.3f * 0.3f)
     {
-        StartCoroutine(Wait(dirs));
+        if (dirs == null)
+        {
+            StartCoroutine(ShowM());
+        }
+        else
+        {
+            StartCoroutine(Wait(dirs));
+        }
     }
     
+    IEnumerator ShowM()
+    {
+        cc.canvasNoDir.GetComponent<Canvas>().enabled = true;
+        yield return new WaitForSeconds(3);
+        cc.canvasNoDir.GetComponent<Canvas>().enabled = false;
+    }
 
     private void Update()
     {
-        if (mover == true)
+        if (choque == true)
         {
-            if (dir == 2) //derecha
-            {
-                if  (posDestino.x - car.position.x >= 0.01f)
-                {
-                    if ((90.1f < car.transform.rotation.eulerAngles.y) & (89.9f > car.transform.rotation.eulerAngles.y))
-                    {
-                        car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
-                    }
-                    car.MovePosition(new Vector3(car.position.x + 0.01f, car.position.y, car.position.z));
-                }
-                
 
-            }
-            else if (dir == 3)//abajo
+            if (mover == true)
             {
-                Debug.Log("Primer paso");
-                if (car.position.z - posDestino.z >= 0.01)
+                if (dir == 2) //derecha
                 {
-                    if ((180.1f < car.transform.rotation.eulerAngles.y) & (179.9f > car.transform.rotation.eulerAngles.y))
+                    if (car.transform.rotation.y != rotacionDestino.y)
                     {
-                        car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
+                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
+                        car.MoveRotation(rotacionDestino);
                     }
-                    Debug.Log("Cuarto paso");
-                    car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z - 0.01f));
-                }
-            }
-            else if (dir == 1) //arriba
-            {
-                if (car.position.z - posDestino.z <= 0.01)
-                {
-                    if ((0.1f < car.transform.rotation.eulerAngles.y) & (0.9f > car.transform.rotation.eulerAngles.y))
+                    if (posDestino.x - car.position.x >= 0.01f)
                     {
-                        car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
+                        car.MovePosition(new Vector3(car.position.x + 0.01f, car.position.y, car.position.z));
                     }
-                    car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z + 0.01f));
-                }
-            }
-            else if (dir == 4)//izquierda
-            {
-                Debug.Log("Posicion resultante: " + (posDestino.x - car.position.x));
-                if ((posDestino.x < car.position.x)) 
-                {
-                    //if (car.transform.rotation.y != rotacionDestino.y)
-                    {
-                        Debug.Log("Rotacion actual: " + car.rotation.y);
-                        if ((270.1f < car.transform.rotation.eulerAngles.y) & (269.9f > car.transform.rotation.eulerAngles.y))
-                        {
-                            car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
-                        }
-                        Debug.Log("Segunda Rotacion actual: " + car.rotation.y);
-                        Debug.Log("Supuesta Rotacion destino: " + rotacionDestino);
-
-                    }
-                    car.MovePosition(new Vector3(car.position.x - 0.01f, car.position.y, car.position.z));
-                }
 
 
+                }
+                else if (dir == 3)// Abajo
+                {
+                    if (car.transform.rotation.y != rotacionDestino.y) // Rotacion
+                    {
+                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
+                        car.MoveRotation(rotacionDestino);
+                    }
+                    if (car.position.z - posDestino.z >= 0.01) // Movimiento
+                    {
+                        car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z - 0.01f));
+                    }
+                }
+                else if (dir == 1) //arriba
+                {
+                    if (car.transform.rotation.y != rotacionDestino.y)
+                    {
+                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
+                        // PROBAR ESTO
+                        //Vector3 relativePos = target.position - transform.position;
+
+                        //// the second argument, upwards, defaults to Vector3.up
+                        //Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+                        //transform.rotation = rotation;
+                        car.MoveRotation(rotacionDestino);
+
+                    }
+                    if (car.position.z - posDestino.z <= 0.01)
+                    {
+                        car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z + 0.01f));
+                    }
+                }
+                else if (dir == 4)//izquierda
+                {
+                    if (car.transform.rotation.y != rotacionDestino.y)
+                    {
+                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
+                        car.MoveRotation(rotacionDestino);
+                    }
+                    if ((posDestino.x < car.position.x))
+                    {
+                        car.MovePosition(new Vector3(car.position.x - 0.01f, car.position.y, car.position.z));
+                    }
+                }
+                else
+                {
+                    mover = false;
+                }
+
             }
-            else
-            {
-                mover = false;
-            }
-            
         }
     }
 
-    IEnumerator Wait(ArrayList direc)
-    {
-        posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
-        for (int i = 0; i < direc.Count; i++)
+        IEnumerator Wait(ArrayList direc)
         {
-            
-            if (direc[i].Equals(1)) //arriba
-            {
-                posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + (1.3f * 0.3f));
-                rotacionDestino = Quaternion.Euler(car.rotation.x, 0, car.rotation.z);
-                yield return new WaitForSeconds(1.5f);
-                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                dir = 1;
-                mover = true;
-                yield return new WaitForSeconds(1.5f);
-            }
-            if (direc[i].Equals(2)) //derecha
+            posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
+            for (int i = 0; i < direc.Count; i++)
             {
 
-                posDestino = new Vector3(car.transform.position.x + (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
-                rotacionDestino = Quaternion.Euler(car.rotation.x, 90, car.rotation.z);
-                yield return new WaitForSeconds(1.5f);
-                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                dir = 2;
-                mover = true;
-                
-                
-                yield return new WaitForSeconds(1.5f); 
-                
+                if (direc[i].Equals(1)) //arriba
+                {
+                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + (1.3f * 0.3f));
+                    rotacionDestino = Quaternion.Euler(car.rotation.x, 0, car.rotation.z);
+                    yield return new WaitForSeconds(1.5f);
+                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                    dir = 1;
+                    mover = true;
+                    yield return new WaitForSeconds(1.5f);
+                }
+                if (direc[i].Equals(2)) //derecha
+                {
 
-            }
-            if (direc[i].Equals(3)) //abajo
-            {
-                posDestino = new Vector3(car.transform.position.x , car.transform.position.y, car.transform.position.z - (1.3f * 0.3f));
-                rotacionDestino = Quaternion.Euler(car.rotation.x, 180, car.rotation.z);
-                yield return new WaitForSeconds(1.5f);
-                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                dir = 3;
-                mover = true;
-                yield return new WaitForSeconds(1.5f);
-            }
-            if (direc[i].Equals(4)) //izquierda
-            {
-                posDestino = new Vector3(car.transform.position.x - (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
-                rotacionDestino = Quaternion.Euler(car.rotation.x, 270, car.rotation.z);
-                yield return new WaitForSeconds(1.5f);
-                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                dir = 4;
-                mover = true;
+                    posDestino = new Vector3(car.transform.position.x + (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
+                    rotacionDestino = Quaternion.Euler(car.rotation.x, 90, car.rotation.z);
+                    yield return new WaitForSeconds(1.5f);
+                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                    dir = 2;
+                    mover = true;
 
 
-                yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(1.5f);
+
+
+                }
+                if (direc[i].Equals(3)) //abajo
+                {
+                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z - (1.3f * 0.3f));
+                    rotacionDestino = Quaternion.Euler(car.rotation.x, 180, car.rotation.z);
+                    yield return new WaitForSeconds(1.5f);
+                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                    dir = 3;
+                    mover = true;
+                    yield return new WaitForSeconds(1.5f);
+                }
+                if (direc[i].Equals(4)) //izquierda
+                {
+                    posDestino = new Vector3(car.transform.position.x - (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
+                    rotacionDestino = Quaternion.Euler(car.rotation.x, 270, car.rotation.z);
+                    yield return new WaitForSeconds(1.5f);
+                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                    dir = 4;
+                    mover = true;
+
+
+                    yield return new WaitForSeconds(1.5f);
+                }
+                //posActual = posDestino;
             }
-            posActual = posDestino;
+            mover = false;
+
         }
 
-    }
 
 
 
-
+    
 }

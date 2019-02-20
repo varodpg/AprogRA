@@ -71,8 +71,8 @@
     <Compile Include="Assets\Scripts\MovFlechas\ArribaMov.cs" />
     <Compile Include="Assets\Scripts\MovFlechas\DchaMov.cs" />
     <Compile Include="Assets\Scripts\MovFlechas\IzqMov.cs" />
-    <Compile Include="Assets\Scripts\MovFluido.cs" />
     <Compile Include="Assets\Scripts\MovStar.cs" />
+    <Compile Include="Assets\Scripts\NoDirScript.cs" />
     <Compile Include="Assets\Scripts\TriggerCrash.cs" />
     <Compile Include="Assets\Scripts\TriggerWin.cs" />
     <Compile Include="Assets\triggerWin.cs" />

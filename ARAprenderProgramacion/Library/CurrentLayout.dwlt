@@ -71,10 +71,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 683, y: 348}
-  m_MaxSize: {x: 12008, y: 8048}
+  m_MinSize: {x: 681, y: 348}
+  m_MaxSize: {x: 12006, y: 8048}
   vertical: 0
-  controlID: 10
+  controlID: 96
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 348}
   m_MaxSize: {x: 8006, y: 8048}
   vertical: 1
-  controlID: 11
+  controlID: 97
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 12
+  controlID: 98
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -482,19 +482,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/MovFlechas
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/MovFlechas
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\varod\Desktop\AprogRA\ARAprenderProgramacion
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 6}
-    m_SelectedIDs: 6e2b0000
-    m_LastClickedID: 11118
+    m_SelectedIDs: 062c0000
+    m_LastClickedID: 11270
     m_ExpandedIDs: 00000000fe280000b42a0000d42a00006e2b00007c2b0000642d0000942d0000a82d0000e22e00007a2f00001a3100005631000082310000b0340000b2340000b4340000b6340000b8340000ba340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -548,8 +548,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: a2e2ffff
+    m_LastClickedInstanceID: -7518
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000f22d0000ae320000843200008c3500005828000000000000142f0000022d0000f4520000f0520000c8520000
     m_RenameOverlay:
@@ -642,9 +642,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: d4fbffff
+      m_SelectedIDs: cc320000
+      m_LastClickedID: 13004
+      m_ExpandedIDs: d4fbffff0a3200004c32000086330000c6330000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -729,13 +729,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.12144988, y: 0.20707735, z: -0.025898248, w: 0.9704114}
+    m_Target: {x: 0.22889803, y: -0.15522555, z: 0.037019085, w: 0.9602814}
     speed: 2
-    m_Value: {x: 0.12144988, y: 0.20707735, z: -0.025898248, w: 0.9704114}
+    m_Value: {x: 0.22889803, y: -0.15522555, z: 0.037019085, w: 0.9602814}
   m_Size:
-    m_Target: 1.783438
+    m_Target: 1.1834381
     speed: 2
-    m_Value: 1.783438
+    m_Value: 1.1834381
   m_Ortho:
     m_Target: 0
     speed: 2

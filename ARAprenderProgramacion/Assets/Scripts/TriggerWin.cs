@@ -7,6 +7,7 @@ public class TriggerWin : MonoBehaviour
 {
     public Button botonVolver;
     public CambiarCanvas cc;
+    public Ejecutar e;
 
     private void Start()
     {
@@ -16,6 +17,8 @@ public class TriggerWin : MonoBehaviour
     {
         Debug.Log("WIIIIN");
         cc.changeWin();
+        e.mover = false;
+        e.choque = false;
     }
 
     void GoBack()

@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class CambiarCanvas : MonoBehaviour
 {
-    public Canvas canvasFlechas, canvasWin, canvasChoque;
+    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir;
     public Canvas canvasGame;
     public Rigidbody car;
     private Vector3 posicionFinal;
     private int contador = 0;
+    public bool showText = false, noDirCondicion = false;
+    private float currentTime = 0.0f, executedTime = 0.0f, timeToWait = 5.0f;
 
     void Start()
     {
@@ -18,7 +20,8 @@ public class CambiarCanvas : MonoBehaviour
         canvasGame.GetComponent<Canvas>().enabled = true;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
-     
+        canvasNoDir.GetComponent<Canvas>().enabled = false;
+
     }
 
     public void changeWin()
@@ -28,6 +31,7 @@ public class CambiarCanvas : MonoBehaviour
         canvasWin.GetComponent<Canvas>().enabled = true;
         canvasChoque.GetComponent<Canvas>().enabled = false;
         GameObject.Find("WinIcon").SetActive(false);
+        canvasNoDir.GetComponent<Canvas>().enabled = false;
     }
     public void showCrashCanvas()
     {
@@ -35,6 +39,7 @@ public class CambiarCanvas : MonoBehaviour
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = true;
+        canvasNoDir.GetComponent<Canvas>().enabled = false;
     }
     public void volverMenu()
     {
@@ -292,4 +297,8 @@ public class CambiarCanvas : MonoBehaviour
         star.transform.RotateAround(star.transform.position, new Vector3(0,1,0), Time.deltaTime * 90f);
     }
 
+
+    
+            
+    
 }
