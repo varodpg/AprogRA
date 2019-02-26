@@ -16,7 +16,7 @@ public class Ejecutar : MonoBehaviour
     Vector3 m_EulerAngleVelocity;
     public bool mover = false;
     private bool continuar = false;
-    public bool choque = true;
+    public bool choque = false;
     Vector3 pos;
     private int dir = 0;
     public NoDirScript noDirScript;
@@ -222,7 +222,7 @@ public class Ejecutar : MonoBehaviour
             }
             mover = false;
             // Comprobar si ha llegado o no al destino.
-            if (haGanado == false)
+            if ((haGanado == false) & (choque == true)) // Si ha llegado al destino y no se ha chocado / salido de la carretera.
             {
                 cc.changeDefeat();
             }

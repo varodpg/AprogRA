@@ -23,6 +23,6 @@ public class Derrota : MonoBehaviour
     }
     void Reintentar()
     {
-        cc.repetirNivel(1);
+        cc.repetirNivel();
     }
 }

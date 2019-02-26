@@ -10,6 +10,7 @@ public class CambiarCanvas : MonoBehaviour
     public Canvas canvasGame;
     public Rigidbody car;
     private Vector3 posicionFinal;
+    public int nivelActual;
     private int contador = 0;
     public bool showText = false, noDirCondicion = false;
     private float currentTime = 0.0f, executedTime = 0.0f, timeToWait = 5.0f;
@@ -48,13 +49,13 @@ public class CambiarCanvas : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
     }
-    public void repetirNivel(int nivel)
+    public void repetirNivel()
     {
-        SceneManager.LoadScene("Level"+nivel);
+        SceneManager.LoadScene("Level"+ nivelActual);
     }
-    public void siguienteNivel(int nivel)
+    public void siguienteNivel()
     {
-        SceneManager.LoadScene("Level" + (nivel + 1));
+        SceneManager.LoadScene("Level" + (nivelActual + 1));
     }
     public void mostrarFlechas(string dir)
     {

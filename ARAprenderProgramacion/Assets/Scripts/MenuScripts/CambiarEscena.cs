@@ -11,7 +11,7 @@ public class CambiarEscena : MonoBehaviour
     public Button OptionsButton;
     public Button HowPlayButton;
     public Button Back;
-    public Button BackLevels;
+    public Button BackLevels, BackHow;
     public Button Levels;
     public Canvas CanvasMenu, CanvasOptions, CanvasHowPlay, CanvasLevels;
  
@@ -20,13 +20,14 @@ public class CambiarEscena : MonoBehaviour
     {
         PlayButton.onClick.AddListener(StartLevel);
         OptionsButton.onClick.AddListener(Options);
-        //HowPlayButton.onClick.AddListener(HowPlay);
+        HowPlayButton.onClick.AddListener(HowPlay);
         Back.onClick.AddListener(GoBack);
+        BackHow.onClick.AddListener(GoBack);
         Levels.onClick.AddListener(GoLevels);
         BackLevels.onClick.AddListener(GoBackLevels);
         CanvasMenu.GetComponent<Canvas>().enabled = true;
         CanvasOptions.GetComponent<Canvas>().enabled = false;
-        //CanvasHowPlay.GetComponent<Canvas>().enabled = false;
+        CanvasHowPlay.GetComponent<Canvas>().enabled = false;
         CanvasLevels.GetComponent<Canvas>().enabled = false;
     }
     public void GoLevels()
@@ -34,6 +35,7 @@ public class CambiarEscena : MonoBehaviour
         CanvasLevels.GetComponent<Canvas>().enabled = true;
         CanvasMenu.GetComponent<Canvas>().enabled = false;
         CanvasOptions.GetComponent<Canvas>().enabled = false;
+        CanvasHowPlay.GetComponent<Canvas>().enabled = false;
     }
     public void StartLevel()
     {
@@ -43,23 +45,25 @@ public class CambiarEscena : MonoBehaviour
     {
         CanvasOptions.GetComponent<Canvas>().enabled = true;
         CanvasMenu.GetComponent<Canvas>().enabled = false;
-        //CanvasHowPlay.GetComponent<Canvas>().enabled = false;
+        CanvasHowPlay.GetComponent<Canvas>().enabled = false;
     }
-    //public void HowPlay()
-    //{
-    //    CanvasMenu.GetComponent<Canvas>().enabled = false;
-    //    CanvasOptions.GetComponent<Canvas>().enabled = false;
-    //    CanvasHowPlay.GetComponent<Canvas>().enabled = true;
-    //}
+    public void HowPlay()
+    {
+        CanvasMenu.GetComponent<Canvas>().enabled = false;
+        CanvasOptions.GetComponent<Canvas>().enabled = false;
+        CanvasHowPlay.GetComponent<Canvas>().enabled = true;
+    }
     public void GoBack()
     {
         CanvasOptions.GetComponent<Canvas>().enabled = false;
         CanvasMenu.GetComponent<Canvas>().enabled = true;
+        CanvasHowPlay.GetComponent<Canvas>().enabled = false;
     }
 
     public void GoBackLevels()
     {
         CanvasLevels.GetComponent<Canvas>().enabled = false;
         CanvasMenu.GetComponent<Canvas>().enabled = true;
+        CanvasHowPlay.GetComponent<Canvas>().enabled = false;
     }
 }

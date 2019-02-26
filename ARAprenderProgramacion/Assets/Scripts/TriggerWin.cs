@@ -33,7 +33,7 @@ public class TriggerWin : MonoBehaviour
     }
     void NextLevel()
     {
-        cc.siguienteNivel(level);
+        cc.siguienteNivel();
     }
 
 }
