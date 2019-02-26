@@ -21,6 +21,7 @@ public class Ejecutar : MonoBehaviour
     private int dir = 0;
     public NoDirScript noDirScript;
     public CambiarCanvas cc;
+    public bool haGanado = false;
 
 
 
@@ -86,7 +87,7 @@ public class Ejecutar : MonoBehaviour
         }
     }
     
-    IEnumerator ShowM()
+    IEnumerator ShowM() //Mostrar que no hay direcciones
     {
         cc.canvasNoDir.GetComponent<Canvas>().enabled = true;
         yield return new WaitForSeconds(3);
@@ -215,13 +216,17 @@ public class Ejecutar : MonoBehaviour
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
                     dir = 4;
                     mover = true;
-
-
                     yield return new WaitForSeconds(1.5f);
                 }
                 //posActual = posDestino;
             }
             mover = false;
+            // Comprobar si ha llegado o no al destino.
+            if (haGanado == false)
+            {
+                cc.changeDefeat();
+            }
+            
 
         }
 

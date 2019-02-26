@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CambiarCanvas : MonoBehaviour
 {
-    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir;
+    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota;
     public Canvas canvasGame;
     public Rigidbody car;
     private Vector3 posicionFinal;
@@ -21,6 +21,7 @@ public class CambiarCanvas : MonoBehaviour
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
+        canvasDerrota.GetComponent<Canvas>().enabled = false;
 
     }
 
@@ -32,6 +33,7 @@ public class CambiarCanvas : MonoBehaviour
         canvasChoque.GetComponent<Canvas>().enabled = false;
         GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
+        canvasDerrota.GetComponent<Canvas>().enabled = false;
     }
     public void showCrashCanvas()
     {
@@ -40,14 +42,19 @@ public class CambiarCanvas : MonoBehaviour
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = true;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
+        canvasDerrota.GetComponent<Canvas>().enabled = false;
     }
     public void volverMenu()
     {
         SceneManager.LoadScene("MenuScene");
     }
-    public void repetirNivel()
+    public void repetirNivel(int nivel)
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level"+nivel);
+    }
+    public void siguienteNivel(int nivel)
+    {
+        SceneManager.LoadScene("Level" + (nivel + 1));
     }
     public void mostrarFlechas(string dir)
     {
@@ -288,13 +295,20 @@ public class CambiarCanvas : MonoBehaviour
 
     }
 
-    public void errorEjec()
-    {
-        //mostramos un canvas de error al no haber direcciones agragadas
-    }
     public void moveStar(Rigidbody star)
     {
         star.transform.RotateAround(star.transform.position, new Vector3(0,1,0), Time.deltaTime * 90f);
+    }
+
+    public void changeDefeat()
+    {
+        canvasGame.GetComponent<Canvas>().enabled = false;
+        canvasFlechas.GetComponent<Canvas>().enabled = false;
+        canvasWin.GetComponent<Canvas>().enabled = false;
+        canvasChoque.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("WinIcon").SetActive(false);
+        canvasNoDir.GetComponent<Canvas>().enabled = false;
+        canvasDerrota.GetComponent<Canvas>().enabled = true;
     }
 
 

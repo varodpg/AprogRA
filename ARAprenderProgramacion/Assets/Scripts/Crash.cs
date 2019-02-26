@@ -17,7 +17,7 @@ public class Crash : MonoBehaviour
     // Update is called once per frame
     void repetir()
     {
-        cc.repetirNivel();
+        cc.repetirNivel(1);
     }
     void menu()
     {
