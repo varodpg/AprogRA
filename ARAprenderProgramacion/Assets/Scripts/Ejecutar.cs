@@ -8,10 +8,10 @@ using System.Threading;
 public class Ejecutar : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Rigidbody car, star;
+    public Rigidbody car, star, cocheAuto;
     public ArrayList direcciones;
     public Button botonEjecutar;
-    public Vector3 posActual, posDestino;
+    public Vector3 posActual, posDestino, posDestinoAuto;
     public Quaternion rotacionDestino, rotacionInicial;
     Vector3 m_EulerAngleVelocity;
     public bool mover = false;
@@ -22,6 +22,9 @@ public class Ejecutar : MonoBehaviour
     public NoDirScript noDirScript;
     public CambiarCanvas cc;
     public bool haGanado = false;
+    public int maxMovimientos;
+    public CocheAuto auto;
+  
 
 
 
@@ -158,6 +161,13 @@ public class Ejecutar : MonoBehaviour
                         car.MovePosition(new Vector3(car.position.x - 0.01f, car.position.y, car.position.z));
                     }
                 }
+                else if (dir == 5) //esperar
+                {
+                    if ((posDestinoAuto.x > cocheAuto.position.x))
+                    {
+                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.01f, cocheAuto.position.y, cocheAuto.position.z));
+                    }
+                }
                 else
                 {
                     mover = false;
@@ -166,6 +176,11 @@ public class Ejecutar : MonoBehaviour
             }
         }
     }
+
+
+
+
+
 
         IEnumerator Wait(ArrayList direc)
         {
@@ -219,6 +234,15 @@ public class Ejecutar : MonoBehaviour
                     yield return new WaitForSeconds(1.5f);
                 }
                 //posActual = posDestino;
+                if (direc[i].Equals(5))
+                {
+                    posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * (1.3f * 0.3f)), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
+                    yield return new WaitForSeconds(1.5f);
+                    dir = 5;
+                    mover = true;
+                    yield return new WaitForSeconds(1.5f);
+                    
+                }
             }
             mover = false;
             // Comprobar si ha llegado o no al destino.

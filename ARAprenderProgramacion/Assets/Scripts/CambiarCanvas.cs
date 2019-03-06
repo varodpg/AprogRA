@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Reflection;
+using System;
 
 public class CambiarCanvas : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class CambiarCanvas : MonoBehaviour
     private int contador = 0;
     public bool showText = false, noDirCondicion = false;
     private float currentTime = 0.0f, executedTime = 0.0f, timeToWait = 5.0f;
+    public Ejecutar e;
 
     void Start()
     {
@@ -59,240 +62,906 @@ public class CambiarCanvas : MonoBehaviour
     }
     public void mostrarFlechas(string dir)
     {
-        contador++;
-        canvasFlechas.GetComponent<Canvas>().enabled = true;
-        switch (contador)
+        if (e.maxMovimientos <= 4)
         {
-            case 1: // movimiento numero 1
-                if (dir == "right") //Si queremos mostrar DCHA
-                {
-                    GameObject.Find("Right").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+            contador++;
+            canvasFlechas.GetComponent<Canvas>().enabled = true;
+            switch (contador)
+            {
+                case 1: // movimiento numero 1
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        GameObject.Find("Right").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
 
 
-                }
-                else if (dir == "up")
-                {
-                    GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    }
+                    else if (dir == "up")
+                    {
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
 
-                else if (dir == "down")
-                {
-                    GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    }
 
-                else if (dir == "left")
-                {
-                    GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                break;
-            case 2: // segundo movimiento
-                if (dir == "right") //Si queremos mostrar DCHA
-                {
-                    GameObject.Find("Right2").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                else if (dir == "up")
-                {
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    else if (dir == "down")
+                    {
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
 
-                else if (dir == "down")
-                {
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    }
 
-                else if (dir == "left")
-                {
-                    GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left2").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                break;
-            case 3: // segundo movimiento
-                if (dir == "right") //Si queremos mostrar DCHA
-                {
-                    GameObject.Find("Right3").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                else if (dir == "up")
-                {
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    else if (dir == "left")
+                    {
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 2: // segundo movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        GameObject.Find("Right2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "up")
+                    {
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
 
-                else if (dir == "down")
-                {
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    else if (dir == "down")
+                    {
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
 
-                else if (dir == "left")
-                {
-                    GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left3").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                break;
-            case 4: // segundo movimiento
-                if (dir == "right") //Si queremos mostrar DCHA
-                {
-                    GameObject.Find("Right4").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                else if (dir == "up")
-                {
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
+                    else if (dir == "left")
+                    {
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 3: // segundo movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        GameObject.Find("Right3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "up")
+                    {
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
 
-                else if (dir == "down")
-                {
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(1, 1, 1);
-                }
+                    else if (dir == "down")
+                    {
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
 
-                else if (dir == "left")
-                {
-                    GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Left4").transform.localScale = new Vector3(1, 1, 1);
-                    GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
-                    GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
-                }
-                break;
-            default:
-                break;
+                    else if (dir == "left")
+                    {
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 4: // segundo movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        GameObject.Find("Right4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "up")
+                    {
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "down")
+                    {
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(1, 1, 1);
+                    }
+
+                    else if (dir == "left")
+                    {
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-        
+        else if (e.maxMovimientos == 5)
+        {
+            contador++;
+            canvasFlechas.GetComponent<Canvas>().enabled = true;
+            switch (contador)
+            {
+                case 1: // movimiento numero 1
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        GameObject.Find("Right").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
+                        try
+                        {
+                            GameObject.Find("StopArrow").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        } catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);                      
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);                      
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);              
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "up")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);                        
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "down")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "left")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "stop")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow").transform.localScale = new Vector3(1, 1, 1);
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 2: // segundo movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+
+                    }
+                    else if (dir == "up")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+
+                        GameObject.Find("Up2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+
+                    }
+
+                    else if (dir == "down")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Down2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+
+                    }
+
+                    else if (dir == "left")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Left2").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+
+                    }
+                    else if (dir == "stop")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow2").transform.localScale = new Vector3(1, 1, 1);
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down2").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 3: // tercer movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+
+                    }
+                    else if (dir == "up")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Up3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "down")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Down3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "left")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Left3").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+
+                    }
+                    else if (dir == "stop")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow3").transform.localScale = new Vector3(1, 1, 1);
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down3").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 4: // segundo movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "up")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Up4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "down")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Down4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "left")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(0, 0, 0);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Left4").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "stop")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow4").transform.localScale = new Vector3(1, 1, 1);
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down4").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                case 5: // segundo movimiento
+                    if (dir == "right") //Si queremos mostrar DCHA
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right5").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "up")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Up5").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "down")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Down5").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+
+                    else if (dir == "left")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(0, 0, 0);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Left5").transform.localScale = new Vector3(1, 1, 1);
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    else if (dir == "stop")
+                    {
+                        try
+                        {
+                            GameObject.Find("StopArrow5").transform.localScale = new Vector3(1, 1, 1);
+                        }
+                        catch (NullReferenceException e)
+                        {
+                            Debug.Log("En este nivel no hay stops");
+                        }
+                        GameObject.Find("Right5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Left5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Up5").transform.localScale = new Vector3(0, 0, 0);
+                        GameObject.Find("Down5").transform.localScale = new Vector3(0, 0, 0);
+                    }
+                    break;
+                default:
+                    Debug.Log ("Esperando...");
+                    break;
+            }
+        }
 
     }
 

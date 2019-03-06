@@ -5957,30 +5957,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Star
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 75.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.3
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.81
@@ -6036,6 +6012,30 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.1000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 75.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.3
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7de335567f30ce64083c65594b15b27f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -13279,9 +13279,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 1873986133}
   star: {fileID: 186830989}
+  cocheAuto: {fileID: 0}
   botonEjecutar: {fileID: 757075164}
   posActual: {x: 0, y: 0, z: 0}
   posDestino: {x: 0, y: 0, z: 0}
+  posDestinoAuto: {x: 0, y: 0, z: 0}
   rotacionDestino: {x: 0, y: 0, z: 0, w: 0}
   rotacionInicial: {x: 0, y: 0, z: 0, w: 0}
   mover: 0
@@ -13289,6 +13291,8 @@ MonoBehaviour:
   noDirScript: {fileID: 1999992391}
   cc: {fileID: 1109292682}
   haGanado: 0
+  maxMovimientos: 4
+  auto: {fileID: 0}
 --- !u!114 &757075164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14228,6 +14232,7 @@ MonoBehaviour:
   nivelActual: 2
   showText: 0
   noDirCondicion: 0
+  e: {fileID: 757075163}
 --- !u!114 &1109292683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15537,8 +15542,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -292.8, y: -97.9}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -264.5, y: -97.9}
+  m_SizeDelta: {x: 216.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574179168
 MonoBehaviour:
@@ -15573,7 +15578,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tus movimientos:'
+  m_Text: "Tus movimientos: (M\xE1x: 4)"
 --- !u!222 &1574179169
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26707,8 +26712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -291.9, y: -95.4}
-  m_SizeDelta: {x: 162, y: 30}
+  m_AnchoredPosition: {x: -264.5, y: -95.4}
+  m_SizeDelta: {x: 216.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062560837
 MonoBehaviour:
@@ -26743,7 +26748,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tus movimientos:'
+  m_Text: "Tus movimientos: (M\xE1x: 4)"
 --- !u!222 &2062560838
 CanvasRenderer:
   m_ObjectHideFlags: 0

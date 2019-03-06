@@ -5,6 +5,7 @@ SceneListBegin?
 Assets/Scenes/Menu/MenuScene.unity
 Assets/Scenes/Levels/Level1.unity
 Assets/Scenes/Levels/Level2.unity
+Assets/Scenes/Levels/Level3.unity
 SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f VuforiaScripts.dll:.BoundingBoxRenderer
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
@@ -70,7 +71,7 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
 352455aaadb8c98ff36ead557753abfa Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TiltInput
 357dc9516c87a9d2caf5c0f50c455e56 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.WaterBase
-0afb70c1823dc96f2c3f5fbb9ea21342 Assembly-CSharp.dll:.CambiarCanvas
+da0c9fe454a89c107d2edcfb3fa25876 Assembly-CSharp.dll:.CambiarCanvas
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Jugar
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -107,7 +108,7 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Ball.BallUserControl
 1731d95cc8dce262956d345535456351 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Cameras.AutoCam
 22129f390263b861c21ac009cdceaec5 Assembly-CSharp.dll:.IzqMov
-b6e24b8b8cff2b67ef62918e216649ae Assembly-CSharp.dll:.CambiarEscena
+861c6de49d2b984e9129b0859a0676b6 Assembly-CSharp.dll:.CambiarEscena
 e540a01426f9ad59088593bf72bcd255 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.TimedObjectActivator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -240,7 +241,7 @@ a4d879eed97e8d86fd752672fc026fa2 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:.ForcedReset
 f8bd7a92bf9f22d289759689ae7b1fd4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SmoothFollow
 d1428a2bf0788da8e4a46818dd37766f Assembly-CSharp.dll:.MovStar
-7053426cb1455e31b2290fa0e051db19 Assembly-CSharp.dll:.Ejecutar
+1495f5e0a507a54c40e74b2f840a7fff Assembly-CSharp.dll:.Ejecutar
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 14d684e5eb706041b258044f3a2d3861 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.PlanarReflection
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Displace
@@ -402,3 +403,4 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 47cd05cf11ce8beb2fd9a1522f58f5ec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+0afb70c1823dc96f2c3f5fbb9ea21342 Assembly-CSharp.dll:.CuatroF
