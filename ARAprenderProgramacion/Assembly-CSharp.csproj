@@ -61,6 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GrassRoadRace\Script\CameraMove.cs" />
+    <Compile Include="Assets\Island\Scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\Island\Scripts\FixedTiling.cs" />
+    <Compile Include="Assets\Island\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Island\Scripts\WaterScroller.cs" />
     <Compile Include="Assets\Scripts\CambiarCanvas.cs" />
     <Compile Include="Assets\Scripts\CanvasFlechas\CuatroF.cs" />
     <Compile Include="Assets\Scripts\CocheAuto.cs" />
@@ -79,6 +83,9 @@
     <Compile Include="Assets\Scripts\NoDirScript.cs" />
     <Compile Include="Assets\Scripts\TriggerCrash.cs" />
     <Compile Include="Assets\Scripts\TriggerWin.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogic.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\Demo.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControl.cs" />
     <Compile Include="Assets\triggerWin.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
     <None Include="Assets\Vuforia\Shaders\CameraDiffuse.shader" />

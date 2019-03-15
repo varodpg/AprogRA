@@ -11,6 +11,7 @@ public class CambiarEscena : MonoBehaviour
     public Button OptionsButton;
     public Button HowPlayButton;
     public Button Back;
+    public Button ExitButton, LinkButton;
     public Button BackLevels, BackHow;
     public Button Levels;
     public Canvas CanvasMenu, CanvasOptions, CanvasHowPlay, CanvasLevels;
@@ -29,6 +30,8 @@ public class CambiarEscena : MonoBehaviour
         BackHow.onClick.AddListener(GoBack);
         Levels.onClick.AddListener(GoLevels);
         BackLevels.onClick.AddListener(GoBackLevels);
+        ExitButton.onClick.AddListener(Exit);
+        LinkButton.onClick.AddListener(GoURL);
         CanvasMenu.GetComponent<Canvas>().enabled = true;
         CanvasOptions.GetComponent<Canvas>().enabled = false;
         CanvasHowPlay.GetComponent<Canvas>().enabled = false;
@@ -85,5 +88,15 @@ public class CambiarEscena : MonoBehaviour
         CanvasLevels.GetComponent<Canvas>().enabled = false;
         CanvasMenu.GetComponent<Canvas>().enabled = true;
         CanvasHowPlay.GetComponent<Canvas>().enabled = false;
+    }
+    
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void GoURL()
+    {
+        Application.OpenURL("https://mega.nz/#F!2ZUG2K7T!B9mD6kKFWM_YhdeTSLegoQ");
     }
 }

@@ -8,7 +8,7 @@ using System;
 
 public class CambiarCanvas : MonoBehaviour
 {
-    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota;
+    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota, canvasStop;
     public Canvas canvasGame;
     public Rigidbody car;
     private Vector3 posicionFinal;
@@ -26,6 +26,7 @@ public class CambiarCanvas : MonoBehaviour
         canvasChoque.GetComponent<Canvas>().enabled = false;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
+        canvasStop.GetComponent<Canvas>().enabled = false;
 
     }
 
@@ -38,6 +39,7 @@ public class CambiarCanvas : MonoBehaviour
         GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
+        canvasStop.GetComponent<Canvas>().enabled = false;
     }
     public void showCrashCanvas()
     {
@@ -47,6 +49,7 @@ public class CambiarCanvas : MonoBehaviour
         canvasChoque.GetComponent<Canvas>().enabled = true;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
+        canvasStop.GetComponent<Canvas>().enabled = false;
     }
     public void volverMenu()
     {
@@ -979,9 +982,20 @@ public class CambiarCanvas : MonoBehaviour
         GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = true;
+        canvasStop.GetComponent<Canvas>().enabled = false;
     }
 
-
+    public void stopDefeat()
+    {
+        canvasGame.GetComponent<Canvas>().enabled = false;
+        canvasFlechas.GetComponent<Canvas>().enabled = false;
+        canvasWin.GetComponent<Canvas>().enabled = false;
+        canvasChoque.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("WinIcon").SetActive(false);
+        canvasNoDir.GetComponent<Canvas>().enabled = false;
+        canvasDerrota.GetComponent<Canvas>().enabled = false;
+        canvasStop.GetComponent<Canvas>().enabled = true;
+    }
     
             
     

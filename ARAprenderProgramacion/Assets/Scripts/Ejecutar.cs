@@ -4,6 +4,7 @@ using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Ejecutar : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Ejecutar : MonoBehaviour
     public bool haGanado = false;
     public int maxMovimientos;
     public CocheAuto auto;
+    public ThirdPersonCharacter persona;
   
 
 
@@ -80,6 +82,7 @@ public class Ejecutar : MonoBehaviour
 
     public void ejecutarMovimiento(ArrayList dirs) // (1.3f * 0.3f)
     {
+        
         if (dirs == null)
         {
             StartCoroutine(ShowM());
@@ -158,15 +161,16 @@ public class Ejecutar : MonoBehaviour
                     }
                     if ((posDestino.x < car.position.x))
                     {
-                        car.MovePosition(new Vector3(car.position.x - 0.01f, car.position.y, car.position.z));
+                        car.MovePosition(new Vector3(car.position.x - 0.05f, car.position.y, car.position.z));
                     }
                 }
                 else if (dir == 5) //esperar
                 {
                     if ((posDestinoAuto.x > cocheAuto.position.x))
                     {
-                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.01f, cocheAuto.position.y, cocheAuto.position.z));
+                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.01f, cocheAuto.position.y, cocheAuto.position.z));               
                     }
+                    
                 }
                 else
                 {
@@ -233,7 +237,7 @@ public class Ejecutar : MonoBehaviour
                     mover = true;
                     yield return new WaitForSeconds(1.5f);
                 }
-                //posActual = posDestino;
+
                 if (direc[i].Equals(5))
                 {
                     posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * (1.3f * 0.3f)), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
@@ -243,13 +247,20 @@ public class Ejecutar : MonoBehaviour
                     yield return new WaitForSeconds(1.5f);
                     
                 }
-            }
+                // ESTO SOLO PARA EL STOP. (lvl 4)
+                if ((cc.nivelActual == 4) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel cuatro y ha marcado arriba arriba en la 2 y 3 posicion, eso es que no ha esperado en el cruce
+                {
+                    mover = false;
+                    cc.stopDefeat();
+                }
+        }
             mover = false;
             // Comprobar si ha llegado o no al destino.
             if ((haGanado == false) & (choque == true)) // Si ha llegado al destino y no se ha chocado / salido de la carretera.
             {
                 cc.changeDefeat();
             }
+            
             
 
         }
