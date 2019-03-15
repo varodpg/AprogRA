@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\MovFlechas\StopMov.cs" />
     <Compile Include="Assets\Scripts\MovStar.cs" />
     <Compile Include="Assets\Scripts\NoDirScript.cs" />
+    <Compile Include="Assets\Scripts\TriggerColour.cs" />
     <Compile Include="Assets\Scripts\TriggerCrash.cs" />
     <Compile Include="Assets\Scripts\TriggerWin.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogic.cs" />
