@@ -23,8 +23,7 @@ public class Ejecutar : MonoBehaviour
     public CambiarCanvas cc;
     public bool haGanado = false;
     public int maxMovimientos;
-    public CocheAuto auto;
-    public ThirdPersonCharacter persona;
+    private bool stopSignal = false;
   
 
 
@@ -250,15 +249,17 @@ public class Ejecutar : MonoBehaviour
                     
                 }
                 // ESTO SOLO PARA EL STOP. (lvl 4)
-                if ((cc.nivelActual == 4) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel cuatro y ha marcado arriba arriba en la 2 y 3 posicion, eso es que no ha esperado en el cruce
+                if ((cc.nivelActual == 8) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel cuatro y ha marcado arriba arriba en la 2 y 3 posicion, eso es que no ha esperado en el cruce
                 {
                     mover = false;
+                    stopSignal = true;
                     cc.stopDefeat();
+                    break;
                 }
         }
             mover = false;
             // Comprobar si ha llegado o no al destino.
-            if ((haGanado == false) & (choque == true)) // Si ha llegado al destino y no se ha chocado / salido de la carretera.
+            if ((haGanado == false) & (choque == true) & (stopSignal == false)) // Si no ha llegado al destino y no se ha chocado / salido de la carretera.
             {
                 cc.changeDefeat();
             }

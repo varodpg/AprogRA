@@ -8,7 +8,7 @@ using System;
 
 public class CambiarCanvas : MonoBehaviour
 {
-    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota, canvasStop, canvasColor, canvasMenuJuego;
+    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota, canvasStop, canvasColor, canvasMenuJuego, canvasRestriccion;
     public Canvas canvasGame;
     public Rigidbody car;
     private Vector3 posicionFinal;
@@ -31,6 +31,11 @@ public class CambiarCanvas : MonoBehaviour
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = true;
+        }
+        catch (UnassignedReferenceException exs) { }
         menuButton.onClick.AddListener(showMenu);
         backMenuJuego.onClick.AddListener(backMenu);
         try
@@ -69,6 +74,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasColor.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException ex) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void showCrashCanvas()
@@ -90,6 +100,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasColor.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException ex) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void volverMenu()
@@ -1023,7 +1038,6 @@ public class CambiarCanvas : MonoBehaviour
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
-        GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = true;
         try
@@ -1037,6 +1051,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasColor.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException ex) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
 
@@ -1060,6 +1079,16 @@ public class CambiarCanvas : MonoBehaviour
             canvasColor.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException ex) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = true;
+        }
+        catch (UnassignedReferenceException exs) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void wrongColour()
@@ -1079,9 +1108,14 @@ public class CambiarCanvas : MonoBehaviour
 
         try
         {
-            canvasColor.GetComponent<Canvas>().enabled = false;
+            canvasColor.GetComponent<Canvas>().enabled = true;
         }
         catch (UnassignedReferenceException ex) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     
@@ -1096,6 +1130,11 @@ public class CambiarCanvas : MonoBehaviour
         }
 
         canvasGame.GetComponent<Canvas>().enabled = false;
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
         inMenu = true;
 
     }
@@ -1109,6 +1148,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasFlechas = copy;
             canvasFlechas.GetComponent<Canvas>().enabled = true;
         }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = true;
+        }
+        catch (UnassignedReferenceException exs) { }
         inMenu = false;
     }
 }

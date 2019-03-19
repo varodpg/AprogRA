@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CambiarEscena : MonoBehaviour
 {
     //Make sure to attach these Buttons in the Inspector
-    public Button Level1, Level2, Level3, Level4, Level5;
+    public Button Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8;
     public Button OptionsButton;
     public Button HowPlayButton;
     public Button Back;
@@ -24,6 +24,9 @@ public class CambiarEscena : MonoBehaviour
         Level3.onClick.AddListener(StartLevel3);
         Level4.onClick.AddListener(StartLevel4);
         Level5.onClick.AddListener(StartLevel5);
+        Level6.onClick.AddListener(StartLevel6);
+        Level7.onClick.AddListener(StartLevel7);
+        Level8.onClick.AddListener(StartLevel8);
         OptionsButton.onClick.AddListener(Options);
         HowPlayButton.onClick.AddListener(HowPlay);
         Back.onClick.AddListener(GoBack);
@@ -63,6 +66,18 @@ public class CambiarEscena : MonoBehaviour
     public void StartLevel5()
     {
         SceneManager.LoadScene("Level5");
+    }
+    public void StartLevel6()
+    {
+        SceneManager.LoadScene("Level6");
+    }
+    public void StartLevel7()
+    {
+        SceneManager.LoadScene("Level7");
+    }
+    public void StartLevel8()
+    {
+        SceneManager.LoadScene("Level8");
     }
     public void Options()
     {
