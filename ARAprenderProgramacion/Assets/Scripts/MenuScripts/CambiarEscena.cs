@@ -20,10 +20,10 @@ public class CambiarEscena : MonoBehaviour
     void Start()
     {
         Level1.onClick.AddListener(StartLevel1);
-        Level2.onClick.AddListener(StartLevel1);
-        Level3.onClick.AddListener(StartLevel1);
-        Level4.onClick.AddListener(StartLevel1);
-        Level5.onClick.AddListener(StartLevel1);
+        Level2.onClick.AddListener(StartLevel2);
+        Level3.onClick.AddListener(StartLevel3);
+        Level4.onClick.AddListener(StartLevel4);
+        Level5.onClick.AddListener(StartLevel5);
         OptionsButton.onClick.AddListener(Options);
         HowPlayButton.onClick.AddListener(HowPlay);
         Back.onClick.AddListener(GoBack);

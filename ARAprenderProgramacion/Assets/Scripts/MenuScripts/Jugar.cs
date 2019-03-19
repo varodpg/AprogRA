@@ -8,7 +8,6 @@ public class Jugar : MonoBehaviour
     // Start is called before the first frame update
     public void playGame(string nombreEscena)
     {
-        print("Hola");
         SceneManager.LoadScene(nombreEscena);
     }
 }

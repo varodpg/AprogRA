@@ -20,7 +20,6 @@ public class Ejecutar : MonoBehaviour
     public bool choque = false;
     Vector3 pos;
     private int dir = 0;
-    public NoDirScript noDirScript;
     public CambiarCanvas cc;
     public bool haGanado = false;
     public int maxMovimientos;
@@ -83,13 +82,16 @@ public class Ejecutar : MonoBehaviour
     public void ejecutarMovimiento(ArrayList dirs) // (1.3f * 0.3f)
     {
         
-        if (dirs == null)
+        if ((dirs == null) & (cc.inMenu == false))
         {
             StartCoroutine(ShowM());
         }
         else
         {
-            StartCoroutine(Wait(dirs));
+            if (cc.inMenu == false)
+            {
+                StartCoroutine(Wait(dirs));
+            }
         }
     }
     
