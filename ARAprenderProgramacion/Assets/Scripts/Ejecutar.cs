@@ -158,7 +158,8 @@ public class Ejecutar : MonoBehaviour
                     if (car.transform.rotation.y != rotacionDestino.y)
                     {
                         //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
-                        car.MoveRotation(rotacionDestino);
+                        car.MoveRotation(new Quaternion(car.rotation.x, car.rotation.y + 0.0005f, car.rotation.z, 0));
+                        //car.MoveRotation(rotacionDestino);
                     }
                     if ((posDestino.x < car.position.x))
                     {
@@ -190,12 +191,13 @@ public class Ejecutar : MonoBehaviour
         IEnumerator Wait(ArrayList direc)
         {
             posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
+           
             for (int i = 0; i < direc.Count; i++)
             {
 
-                if (direc[i].Equals(1)) //arriba
-                {
-                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + (1.3f * 0.3f));
+                if (direc[i].Equals(1)) //arriba (1.3f * 0.3f)
+            {
+                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + 0.45f);
                     rotacionDestino = Quaternion.Euler(car.rotation.x, 0, car.rotation.z);
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
@@ -206,7 +208,7 @@ public class Ejecutar : MonoBehaviour
                 if (direc[i].Equals(2)) //derecha
                 {
 
-                    posDestino = new Vector3(car.transform.position.x + (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
+                    posDestino = new Vector3(car.transform.position.x + 0.45f, car.transform.position.y, car.transform.position.z);
                     rotacionDestino = Quaternion.Euler(car.rotation.x, 90, car.rotation.z);
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
@@ -220,7 +222,7 @@ public class Ejecutar : MonoBehaviour
                 }
                 if (direc[i].Equals(3)) //abajo
                 {
-                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z - (1.3f * 0.3f));
+                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z - 0.45f);
                     rotacionDestino = Quaternion.Euler(car.rotation.x, 180, car.rotation.z);
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
@@ -230,7 +232,7 @@ public class Ejecutar : MonoBehaviour
                 }
                 if (direc[i].Equals(4)) //izquierda
                 {
-                    posDestino = new Vector3(car.transform.position.x - (1.3f * 0.3f), car.transform.position.y, car.transform.position.z);
+                    posDestino = new Vector3(car.transform.position.x - 0.45f, car.transform.position.y, car.transform.position.z);
                     rotacionDestino = Quaternion.Euler(car.rotation.x, 270, car.rotation.z);
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
@@ -241,7 +243,7 @@ public class Ejecutar : MonoBehaviour
 
                 if (direc[i].Equals(5))
                 {
-                    posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * (1.3f * 0.3f)), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
+                    posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * 0.45f), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
                     yield return new WaitForSeconds(1.5f);
                     dir = 5;
                     mover = true;
