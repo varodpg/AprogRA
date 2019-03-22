@@ -8,7 +8,7 @@ using System;
 
 public class CambiarCanvas : MonoBehaviour
 {
-    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota, canvasStop, canvasColor, canvasMenuJuego, canvasRestriccion;
+    public Canvas canvasFlechas, canvasWin, canvasChoque, canvasNoDir, canvasDerrota, canvasStop, canvasColor, canvasMenuJuego, canvasRestriccion, canvasChoqueObjeto;
     public Canvas canvasGame;
     public Rigidbody car;
     private Vector3 posicionFinal;
@@ -49,9 +49,13 @@ public class CambiarCanvas : MonoBehaviour
             canvasColor.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException ex) { }
-       
+        try
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
 
-        
+
 
     }
 
@@ -79,6 +83,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException exs) { }
+        try
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void showCrashCanvas()
@@ -105,6 +114,12 @@ public class CambiarCanvas : MonoBehaviour
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException exs) { }
+
+        try
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void volverMenu()
@@ -1056,6 +1071,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException exs) { }
+        try
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
 
@@ -1089,6 +1109,11 @@ public class CambiarCanvas : MonoBehaviour
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException exs) { }
+        try
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void wrongColour()
@@ -1116,7 +1141,41 @@ public class CambiarCanvas : MonoBehaviour
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException exs) { }
+        try
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+    }
+
+    public void choqueConObjeto()
+    {
+        canvasGame.GetComponent<Canvas>().enabled = false;
+        canvasFlechas.GetComponent<Canvas>().enabled = false;
+        canvasWin.GetComponent<Canvas>().enabled = false;
+        canvasChoque.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("WinIcon").SetActive(false);
+        canvasNoDir.GetComponent<Canvas>().enabled = false;
+        canvasDerrota.GetComponent<Canvas>().enabled = false;
+        try
+        {
+            canvasStop.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException e) { }
+
+        try
+        {
+            canvasColor.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException ex) { }
+        try
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+        catch (UnassignedReferenceException exs) { }
+        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        canvasChoqueObjeto.GetComponent<Canvas>().enabled = true;
     }
     
     public void showMenu()

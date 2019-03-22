@@ -158,12 +158,11 @@ public class Ejecutar : MonoBehaviour
                     if (car.transform.rotation.y != rotacionDestino.y)
                     {
                         //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
-                        car.MoveRotation(new Quaternion(car.rotation.x, car.rotation.y + 0.0005f, car.rotation.z, 0));
-                        //car.MoveRotation(rotacionDestino);
+                        car.MoveRotation(rotacionDestino);
                     }
-                    if ((posDestino.x < car.position.x))
+                    if ((car.position.x - posDestino.x ) >= 0.01)
                     {
-                        car.MovePosition(new Vector3(car.position.x - 0.05f, car.position.y, car.position.z));
+                        car.MovePosition(new Vector3(car.position.x - 0.01f, car.position.y, car.position.z));
                     }
                 }
                 else if (dir == 5) //esperar

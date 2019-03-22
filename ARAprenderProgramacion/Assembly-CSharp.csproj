@@ -83,9 +83,10 @@
     <Compile Include="Assets\Scripts\MovFlechas\IzqMov.cs" />
     <Compile Include="Assets\Scripts\MovFlechas\StopMov.cs" />
     <Compile Include="Assets\Scripts\MovStar.cs" />
-    <Compile Include="Assets\Scripts\TriggerColour.cs" />
-    <Compile Include="Assets\Scripts\TriggerCrash.cs" />
-    <Compile Include="Assets\Scripts\TriggerWin.cs" />
+    <Compile Include="Assets\Scripts\Triggers\TriggerColour.cs" />
+    <Compile Include="Assets\Scripts\Triggers\TriggerCrash.cs" />
+    <Compile Include="Assets\Scripts\Triggers\TriggerObj.cs" />
+    <Compile Include="Assets\Scripts\Triggers\TriggerWin.cs" />
     <Compile Include="Assets\triggerWin.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
     <None Include="Assets\Vuforia\Shaders\CameraDiffuse.shader" />
