@@ -31,32 +31,22 @@ public class CambiarCanvas : MonoBehaviour
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
-        try
-        {
-            canvasRestriccion.GetComponent<Canvas>().enabled = true;
-        }
-        catch (UnassignedReferenceException exs) { }
         menuButton.onClick.AddListener(showMenu);
         backMenuJuego.onClick.AddListener(backMenu);
-        try
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
+        {
+            canvasColor.GetComponent<Canvas>().enabled = false;
+            canvasRestriccion.GetComponent<Canvas>().enabled = true;
+        }
+        
+        if (nivelActual == 8)
         {
             canvasStop.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException e) { }
-
-        try
-        {
-            canvasColor.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
+        if (nivelActual == 4 | nivelActual == 7)
         {
             canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException ex) { }
-
-
-
     }
 
     public void changeWin()
@@ -65,30 +55,23 @@ public class CambiarCanvas : MonoBehaviour
         canvasFlechas.GetComponent<Canvas>().enabled = true;
         canvasWin.GetComponent<Canvas>().enabled = true;
         canvasChoque.GetComponent<Canvas>().enabled = false;
+        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
-        try
-        {
-            canvasStop.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException e) { }
-
-        try
-        {
-            canvasColor.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
-        {
-            canvasRestriccion.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException exs) { }
-        try
+        if (nivelActual == 4 | nivelActual == 7)
         {
             canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException ex) { }
-        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        if (nivelActual == 8)
+        {
+            canvasStop.GetComponent<Canvas>().enabled = false;
+        }
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
+        {
+            canvasColor.GetComponent<Canvas>().enabled = false;
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
+       
     }
     public void showCrashCanvas()
     {
@@ -98,29 +81,20 @@ public class CambiarCanvas : MonoBehaviour
         canvasChoque.GetComponent<Canvas>().enabled = true;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
-        try
-        {
-            canvasStop.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException e) { }
-
-        try
-        {
-            canvasColor.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
-        {
-            canvasRestriccion.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException exs) { }
-
-        try
+        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        if (nivelActual == 4 | nivelActual == 7)
         {
             canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException ex) { }
-        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        if (nivelActual == 8)
+        {
+            canvasStop.GetComponent<Canvas>().enabled = false;
+        }
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
+        {
+            canvasColor.GetComponent<Canvas>().enabled = false;
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
     }
     public void volverMenu()
     {
@@ -1055,28 +1029,21 @@ public class CambiarCanvas : MonoBehaviour
         canvasChoque.GetComponent<Canvas>().enabled = false;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = true;
-        try
+        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        if (nivelActual == 8)
         {
             canvasStop.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException e) { }
-
-        try
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
         {
             canvasColor.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
-        {
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException exs) { }
         try
         {
             canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
         }
         catch (UnassignedReferenceException ex) { }
-        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
 
     public void stopDefeat()
@@ -1085,68 +1052,36 @@ public class CambiarCanvas : MonoBehaviour
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
-        GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
-        try
+        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        if (nivelActual == 8)
         {
             canvasStop.GetComponent<Canvas>().enabled = true;
         }
-        catch (UnassignedReferenceException e) { }
-
-        try
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
         {
             canvasColor.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
-        {
-            canvasRestriccion.GetComponent<Canvas>().enabled = true;
-        }
-        catch (UnassignedReferenceException exs) { }
-        try
-        {
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException exs) { }
-        try
+        if (nivelActual == 4 | nivelActual == 7)
         {
             canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException ex) { }
-        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
     }
     public void wrongColour()
     {
+        canvasColor.GetComponent<Canvas>().enabled = true;
         canvasGame.GetComponent<Canvas>().enabled = false;
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
-        GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
-        try
-        {
-            canvasStop.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException e) { }
-
-        try
-        {
-            canvasColor.GetComponent<Canvas>().enabled = true;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
-        {
-            canvasRestriccion.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException exs) { }
-        try
-        {
-            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
+        canvasStop.GetComponent<Canvas>().enabled = false;
+        canvasRestriccion.GetComponent<Canvas>().enabled = false;
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
     }
 
     public void choqueConObjeto()
@@ -1155,27 +1090,20 @@ public class CambiarCanvas : MonoBehaviour
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
-        GameObject.Find("WinIcon").SetActive(false);
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
-        try
+        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
+        canvasChoqueObjeto.GetComponent<Canvas>().enabled = true;
+        if (nivelActual == 8)
         {
             canvasStop.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException e) { }
-
-        try
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
         {
             canvasColor.GetComponent<Canvas>().enabled = false;
-        }
-        catch (UnassignedReferenceException ex) { }
-        try
-        {
             canvasRestriccion.GetComponent<Canvas>().enabled = false;
         }
-        catch (UnassignedReferenceException exs) { }
-        canvasMenuJuego.GetComponent<Canvas>().enabled = false;
-        canvasChoqueObjeto.GetComponent<Canvas>().enabled = true;
+        
     }
     
     public void showMenu()

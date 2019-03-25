@@ -24,6 +24,7 @@ public class Ejecutar : MonoBehaviour
     public bool haGanado = false;
     public int maxMovimientos;
     private bool stopSignal = false;
+    private int nMovimientos = 0;
   
 
 
@@ -117,7 +118,7 @@ public class Ejecutar : MonoBehaviour
                     }
                     if (posDestino.x - car.position.x >= 0.01f)
                     {
-                        car.MovePosition(new Vector3(car.position.x + 0.01f, car.position.y, car.position.z));
+                        car.MovePosition(new Vector3(car.position.x + 0.015f, car.position.y, car.position.z));
                     }
 
 
@@ -131,7 +132,7 @@ public class Ejecutar : MonoBehaviour
                     }
                     if (car.position.z - posDestino.z >= 0.01) // Movimiento
                     {
-                        car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z - 0.01f));
+                        car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z - 0.015f));
                     }
                 }
                 else if (dir == 1) //arriba
@@ -148,9 +149,9 @@ public class Ejecutar : MonoBehaviour
                         car.MoveRotation(rotacionDestino);
 
                     }
-                    if (car.position.z - posDestino.z <= 0.01)
+                    if (car.position.z - posDestino.z <= 0.01f)
                     {
-                        car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z + 0.01f));
+                        car.MovePosition(new Vector3(car.position.x, car.position.y, car.position.z + 0.015f));
                     }
                 }
                 else if (dir == 4)//izquierda
@@ -160,16 +161,16 @@ public class Ejecutar : MonoBehaviour
                         //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
                         car.MoveRotation(rotacionDestino);
                     }
-                    if ((car.position.x - posDestino.x ) >= 0.01)
+                    if ((car.position.x - posDestino.x ) >= 0.01f)
                     {
-                        car.MovePosition(new Vector3(car.position.x - 0.01f, car.position.y, car.position.z));
+                        car.MovePosition(new Vector3(car.position.x - 0.015f, car.position.y, car.position.z));
                     }
                 }
                 else if (dir == 5) //esperar
                 {
                     if ((posDestinoAuto.x > cocheAuto.position.x))
                     {
-                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.01f, cocheAuto.position.y, cocheAuto.position.z));               
+                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.015f, cocheAuto.position.y, cocheAuto.position.z));               
                     }
                     
                 }
@@ -191,17 +192,18 @@ public class Ejecutar : MonoBehaviour
         {
             posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
            
-            for (int i = 0; i < direc.Count; i++)
+            for (int i = 0; i <= direc.Count; i++)
             {
 
                 if (direc[i].Equals(1)) //arriba (1.3f * 0.3f)
-            {
+                {
                     posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + 0.45f);
                     rotacionDestino = Quaternion.Euler(car.rotation.x, 0, car.rotation.z);
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
                     dir = 1;
                     mover = true;
+                    nMovimientos += 1;
                     yield return new WaitForSeconds(1.5f);
                 }
                 if (direc[i].Equals(2)) //derecha
@@ -212,6 +214,7 @@ public class Ejecutar : MonoBehaviour
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
                     dir = 2;
+                    nMovimientos += 1;
                     mover = true;
 
 
@@ -226,6 +229,7 @@ public class Ejecutar : MonoBehaviour
                     yield return new WaitForSeconds(1.5f);
                     Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
                     dir = 3;
+                    nMovimientos += 1;
                     mover = true;
                     yield return new WaitForSeconds(1.5f);
                 }
@@ -245,26 +249,31 @@ public class Ejecutar : MonoBehaviour
                     posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * 0.45f), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
                     yield return new WaitForSeconds(1.5f);
                     dir = 5;
+                    nMovimientos += 1;
                     mover = true;
                     yield return new WaitForSeconds(1.5f);
                     
                 }
                 // ESTO SOLO PARA EL STOP. (lvl 4)
-                if ((cc.nivelActual == 8) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel cuatro y ha marcado arriba arriba en la 2 y 3 posicion, eso es que no ha esperado en el cruce
+                if ((cc.nivelActual == 8) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel 8 y ha marcado arriba arriba en la 1 y 2 posicion, eso es que no ha esperado en el cruce
                 {
                     mover = false;
                     stopSignal = true;
                     cc.stopDefeat();
                     break;
                 }
-        }
+            }
             mover = false;
             // Comprobar si ha llegado o no al destino.
             if ((haGanado == false) & (choque == true) & (stopSignal == false)) // Si no ha llegado al destino y no se ha chocado / salido de la carretera.
             {
                 cc.changeDefeat();
             }
-            
+
+            if ((nMovimientos == 1) & (haGanado == false) & (choque == true) & (stopSignal == false))
+            {
+                cc.changeDefeat();
+            }
             
 
         }

@@ -20,11 +20,10 @@ public class TriggerWin : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("WIIIIN");
-        cc.changeWin();
         e.mover = false;
         e.choque = false;
         e.haGanado = true;
+        cc.changeWin();        
     }
 
     void GoBack()
