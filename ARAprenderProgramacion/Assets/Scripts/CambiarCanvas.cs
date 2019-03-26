@@ -31,8 +31,6 @@ public class CambiarCanvas : MonoBehaviour
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
-        menuButton.onClick.AddListener(showMenu);
-        backMenuJuego.onClick.AddListener(backMenu);
         if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
         {
             canvasColor.GetComponent<Canvas>().enabled = false;
@@ -47,6 +45,9 @@ public class CambiarCanvas : MonoBehaviour
         {
             canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
         }
+
+        menuButton.onClick.AddListener(showMenu);
+        backMenuJuego.onClick.AddListener(backMenu);
     }
 
     public void changeWin()
