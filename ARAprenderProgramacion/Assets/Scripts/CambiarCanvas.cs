@@ -1023,12 +1023,12 @@ public class CambiarCanvas : MonoBehaviour
 
     public void changeDefeat()
     {
+        canvasDerrota.GetComponent<Canvas>().enabled = true;
         canvasGame.GetComponent<Canvas>().enabled = false;
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
-        canvasDerrota.GetComponent<Canvas>().enabled = true;
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
         if (nivelActual == 8)
         {
@@ -1072,16 +1072,21 @@ public class CambiarCanvas : MonoBehaviour
     public void wrongColour()
     {
         canvasColor.GetComponent<Canvas>().enabled = true;
+        if (nivelActual == 1 | nivelActual == 2 | nivelActual == 3 | nivelActual == 4)
+        {
+            canvasRestriccion.GetComponent<Canvas>().enabled = false;
+        }
         canvasGame.GetComponent<Canvas>().enabled = false;
         canvasFlechas.GetComponent<Canvas>().enabled = false;
         canvasWin.GetComponent<Canvas>().enabled = false;
         canvasChoque.GetComponent<Canvas>().enabled = false;
         canvasNoDir.GetComponent<Canvas>().enabled = false;
         canvasDerrota.GetComponent<Canvas>().enabled = false;
-        canvasStop.GetComponent<Canvas>().enabled = false;
-        canvasRestriccion.GetComponent<Canvas>().enabled = false;
         canvasMenuJuego.GetComponent<Canvas>().enabled = false;
-        canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        if (nivelActual == 4 | nivelActual == 7)
+        {
+            canvasChoqueObjeto.GetComponent<Canvas>().enabled = false;
+        }
     }
 
     public void choqueConObjeto()

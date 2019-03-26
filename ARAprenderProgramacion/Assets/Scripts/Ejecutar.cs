@@ -192,7 +192,7 @@ public class Ejecutar : MonoBehaviour
         {
             posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
            
-            for (int i = 0; i <= direc.Count; i++)
+            for (int i = 0; i < direc.Count; i++)
             {
 
                 if (direc[i].Equals(1)) //arriba (1.3f * 0.3f)
