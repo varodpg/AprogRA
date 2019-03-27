@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class CambiarEscena : MonoBehaviour
 {
     //Make sure to attach these Buttons in the Inspector
-    public Button Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, L2G, L3G, L4G, L5G, L6G, L7G ,L8G;
+    public Button Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8;
     public Button OptionsButton;
     public Button HowPlayButton;
     public Button Back;
     public Button ExitButton, LinkButton;
     public Button BackLevels, BackHow;
     public Button Levels;
-    public Canvas CanvasMenu, CanvasOptions, CanvasHowPlay, CanvasLevels, CanvasGris, CanvasConfirm;
+    public Canvas CanvasMenu, CanvasOptions, CanvasHowPlay, CanvasLevels, CanvasConfirm;
  
 
     void Start()
@@ -27,13 +27,6 @@ public class CambiarEscena : MonoBehaviour
         Level6.onClick.AddListener(StartLevel6);
         Level7.onClick.AddListener(StartLevel7);
         Level8.onClick.AddListener(StartLevel8);
-        L2G.onClick.AddListener(NivelBloqueado);
-        L3G.onClick.AddListener(NivelBloqueado);
-        L4G.onClick.AddListener(NivelBloqueado);
-        L5G.onClick.AddListener(NivelBloqueado);
-        L6G.onClick.AddListener(NivelBloqueado);
-        L7G.onClick.AddListener(NivelBloqueado);
-        L8G.onClick.AddListener(NivelBloqueado);
         OptionsButton.onClick.AddListener(Options);
         HowPlayButton.onClick.AddListener(HowPlay);
         Back.onClick.AddListener(GoBack);
@@ -46,7 +39,6 @@ public class CambiarEscena : MonoBehaviour
         CanvasOptions.GetComponent<Canvas>().enabled = false;
         CanvasHowPlay.GetComponent<Canvas>().enabled = false;
         CanvasLevels.GetComponent<Canvas>().enabled = false;
-        CanvasGris.GetComponent<Canvas>().enabled = false;
         CanvasConfirm.GetComponent<Canvas>().enabled = false;
     }
     public void GoLevels()
@@ -130,15 +122,5 @@ public class CambiarEscena : MonoBehaviour
     public void GoURL()
     {
         Application.OpenURL("https://mega.nz/#F!2ZUG2K7T!B9mD6kKFWM_YhdeTSLegoQ");
-    }
-    void NivelBloqueado()
-    {
-        StartCoroutine(ShowM());
-    }
-    IEnumerator ShowM() //Mostrar que no hay direcciones
-    {
-        CanvasGris.GetComponent<Canvas>().enabled = true;
-        yield return new WaitForSeconds(3);
-        CanvasGris.GetComponent<Canvas>().enabled = false;
     }
 }

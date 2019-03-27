@@ -4,7 +4,6 @@ using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Ejecutar : MonoBehaviour
 {
