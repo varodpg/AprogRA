@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\Ejecutar.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\CambiarEscena.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\Jugar.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\LevelControlScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\SonidoActDes.cs" />
     <Compile Include="Assets\Scripts\MovFlechas\AbajoMov.cs" />
     <Compile Include="Assets\Scripts\MovFlechas\ArribaMov.cs" />

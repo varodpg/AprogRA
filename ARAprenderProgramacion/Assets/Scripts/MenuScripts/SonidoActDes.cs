@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class SonidoActDes : MonoBehaviour
 {
     AudioSource audioSource;
-    public Button sonido;
+    public Button sonido, reinciarNiveles, confirmar, cancelar;
     public Text text;
+    public MainMenuScript mainMenu;
+    public CambiarEscena ce;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         sonido.onClick.AddListener(TaskOnClick);
+        confirmar.onClick.AddListener(reinicio);
+        reinciarNiveles.onClick.AddListener(showConfirm);
+        cancelar.onClick.AddListener(Cancelar);
     }
 
     void TaskOnClick()
@@ -28,5 +33,18 @@ public class SonidoActDes : MonoBehaviour
             text.text = "Sonido activado";
         }
         
+    }
+    void reinicio()
+    {
+        mainMenu.resetPlayerPrefs();
+        ce.closeConfirm();
+    }
+    void showConfirm()
+    {
+        ce.showConfirm();
+    }
+    void Cancelar()
+    {
+        ce.closeConfirm();
     }
 }

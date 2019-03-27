@@ -23,6 +23,7 @@ public class TriggerWin : MonoBehaviour
         e.mover = false;
         e.choque = false;
         e.haGanado = true;
+        LevelControlScript.instance.youWin();
         cc.changeWin();        
     }
 
