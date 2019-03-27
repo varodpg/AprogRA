@@ -101,7 +101,7 @@ public class Ejecutar : MonoBehaviour
         cc.canvasNoDir.GetComponent<Canvas>().enabled = false;
     }
 
-    private void Update()
+    private void Update() //Movimiento del coche
     {
         if (choque == true)
         {
@@ -189,8 +189,8 @@ public class Ejecutar : MonoBehaviour
     IEnumerator Wait(ArrayList direc)
     {
         posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
-           
-        for (int i = 0; i < direc.Count; i++)
+        
+        for (int i = 0; i < direc.Count; i++) //Lectura del array
             {
 
                 if (direc[i].Equals(1)) //arriba (1.3f * 0.3f)
@@ -203,6 +203,8 @@ public class Ejecutar : MonoBehaviour
                     mover = true;
                     nMovimientos += 1;
                     yield return new WaitForSeconds(1.5f);
+                    if (direc.Count == 1)
+                        break;
                 }
                 if (direc[i].Equals(2)) //derecha
                 {
@@ -217,9 +219,10 @@ public class Ejecutar : MonoBehaviour
 
 
                     yield return new WaitForSeconds(1.5f);
+                    if (direc.Count == 1)
+                        break;
 
-
-                }
+            }
                 if (direc[i].Equals(3)) //abajo
                 {
                     posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z - 0.45f);
@@ -230,7 +233,9 @@ public class Ejecutar : MonoBehaviour
                     nMovimientos += 1;
                     mover = true;
                     yield return new WaitForSeconds(1.5f);
-                }
+                    if (direc.Count == 1)
+                        break;
+            }
                 if (direc[i].Equals(4)) //izquierda
                 {
                     posDestino = new Vector3(car.transform.position.x - 0.45f, car.transform.position.y, car.transform.position.z);
@@ -240,7 +245,9 @@ public class Ejecutar : MonoBehaviour
                     dir = 4;
                     mover = true;
                     yield return new WaitForSeconds(1.5f);
-                }
+                    if (direc.Count == 1)
+                        break;
+            }
 
                 if (direc[i].Equals(5))
                 {
@@ -250,8 +257,10 @@ public class Ejecutar : MonoBehaviour
                     nMovimientos += 1;
                     mover = true;
                     yield return new WaitForSeconds(1.5f);
-                    
-                }
+                    if (direc.Count == 1)
+                        break;
+
+            }
                 // ESTO SOLO PARA EL STOP. (lvl 4)
                 if ((cc.nivelActual == 8) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel 8 y ha marcado arriba arriba en la 1 y 2 posicion, eso es que no ha esperado en el cruce
                 {
@@ -262,47 +271,17 @@ public class Ejecutar : MonoBehaviour
                 }
             }
             mover = false;
-            // Comprobar si ha llegado o no al destino.
-            if ((haGanado == false) & (choque == true) & (stopSignal == false)) // Si no ha llegado al destino y no se ha chocado / salido de la carretera.
-            {
-                cc.changeDefeat();
-            }
-
-            if ((nMovimientos == 1) & (haGanado == false) & (choque == true) & (stopSignal == false))
-            {
-                cc.changeDefeat();
-            } 
-            
-            if (haGanado == true)
-            {
-                if(cc.nivelActual == 1)
-                {
-                    
-                }
-                if (cc.nivelActual == 2)
-                {
-
-                }
-                if (cc.nivelActual == 3)
-                {
-
-                }
-                if (cc.nivelActual == 4)
-                {
-
-                }
-                if (cc.nivelActual == 5)
-                {
-
-                }
-                if (cc.nivelActual == 6)
-                {
-
-                }
-                if (cc.nivelActual == 7)
-                {
-
-                }
+        // Comprobar si ha llegado o no al destino.
+        if ((direc.Count == 1) & (haGanado == false) & (choque == true) & (stopSignal == false))
+        {
+            cc.changeDefeat();
         }
+
+        if ((haGanado == false) & (choque == true) & (stopSignal == false))// Si no ha llegado al destino y no se ha chocado / salido de la carretera.
+        {
+            cc.changeDefeat();
+        }
+        
+
     }
 }
