@@ -13,7 +13,6 @@ public class Ejecutar : MonoBehaviour
     public Button botonEjecutar;
     public Vector3 posActual, posDestino, posDestinoAuto;
     public Quaternion rotacionDestino, rotacionInicial;
-    Vector3 m_EulerAngleVelocity;
     public bool mover = false;
     private bool continuar = false;
     public bool choque = false;
@@ -32,7 +31,6 @@ public class Ejecutar : MonoBehaviour
     void Start()
     {
         botonEjecutar.onClick.AddListener(NewMethod);
-        m_EulerAngleVelocity = new Vector3(0, 100, 0);
     }
 
     private void NewMethod()
@@ -58,11 +56,6 @@ public class Ejecutar : MonoBehaviour
     public void setPosDestino(Vector3 pos)
     {
         posDestino = pos;
-    }
-
-    public Vector3 getEuler()
-    {
-        return m_EulerAngleVelocity;
     }
 
     #endregion
@@ -112,7 +105,6 @@ public class Ejecutar : MonoBehaviour
                 {
                     if (car.transform.rotation.y != rotacionDestino.y)
                     {
-                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
                         car.MoveRotation(rotacionDestino);
                     }
                     if (posDestino.x - car.position.x >= 0.01f)
@@ -126,7 +118,6 @@ public class Ejecutar : MonoBehaviour
                 {
                     if (car.transform.rotation.y != rotacionDestino.y) // Rotacion
                     {
-                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
                         car.MoveRotation(rotacionDestino);
                     }
                     if (car.position.z - posDestino.z >= 0.01) // Movimiento
@@ -138,15 +129,7 @@ public class Ejecutar : MonoBehaviour
                 {
                     if (car.transform.rotation.y != rotacionDestino.y)
                     {
-                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
-                        // PROBAR ESTO
-                        //Vector3 relativePos = target.position - transform.position;
-
-                        //// the second argument, upwards, defaults to Vector3.up
-                        //Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-                        //transform.rotation = rotation;
                         car.MoveRotation(rotacionDestino);
-
                     }
                     if (car.position.z - posDestino.z <= 0.01f)
                     {
@@ -157,10 +140,9 @@ public class Ejecutar : MonoBehaviour
                 {
                     if (car.transform.rotation.y != rotacionDestino.y)
                     {
-                        //car.transform.rotation = Quaternion.Slerp(car.transform.rotation, rotacionDestino, Time.deltaTime * 5.0f);
                         car.MoveRotation(rotacionDestino);
                     }
-                    if ((car.position.x - posDestino.x ) >= 0.01f)
+                    if ((car.position.x - posDestino.x) >= 0.01f)
                     {
                         car.MovePosition(new Vector3(car.position.x - 0.015f, car.position.y, car.position.z));
                     }
@@ -169,9 +151,9 @@ public class Ejecutar : MonoBehaviour
                 {
                     if ((posDestinoAuto.x > cocheAuto.position.x))
                     {
-                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.015f, cocheAuto.position.y, cocheAuto.position.z));               
+                        cocheAuto.MovePosition(new Vector3(cocheAuto.position.x + 0.015f, cocheAuto.position.y, cocheAuto.position.z));
                     }
-                    
+
                 }
                 else
                 {
@@ -189,88 +171,88 @@ public class Ejecutar : MonoBehaviour
     IEnumerator Wait(ArrayList direc)
     {
         posActual = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z);
-        
+
         for (int i = 0; i < direc.Count; i++) //Lectura del array
+        {
+
+            if (direc[i].Equals(1)) //arriba (1.3f * 0.3f)
+            {
+                posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + 0.45f);
+                rotacionDestino = Quaternion.Euler(car.rotation.x, 0, car.rotation.z);
+                yield return new WaitForSeconds(1.5f);
+                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                dir = 1;
+                mover = true;
+                nMovimientos += 1;
+                yield return new WaitForSeconds(1.5f);
+                if (direc.Count == 1)
+                    break;
+            }
+            if (direc[i].Equals(2)) //derecha
             {
 
-                if (direc[i].Equals(1)) //arriba (1.3f * 0.3f)
-                {
-                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + 0.45f);
-                    rotacionDestino = Quaternion.Euler(car.rotation.x, 0, car.rotation.z);
-                    yield return new WaitForSeconds(1.5f);
-                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                    dir = 1;
-                    mover = true;
-                    nMovimientos += 1;
-                    yield return new WaitForSeconds(1.5f);
-                    if (direc.Count == 1)
-                        break;
-                }
-                if (direc[i].Equals(2)) //derecha
-                {
-
-                    posDestino = new Vector3(car.transform.position.x + 0.45f, car.transform.position.y, car.transform.position.z);
-                    rotacionDestino = Quaternion.Euler(car.rotation.x, 90, car.rotation.z);
-                    yield return new WaitForSeconds(1.5f);
-                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                    dir = 2;
-                    nMovimientos += 1;
-                    mover = true;
+                posDestino = new Vector3(car.transform.position.x + 0.45f, car.transform.position.y, car.transform.position.z);
+                rotacionDestino = Quaternion.Euler(car.rotation.x, 90, car.rotation.z);
+                yield return new WaitForSeconds(1.5f);
+                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                dir = 2;
+                nMovimientos += 1;
+                mover = true;
 
 
-                    yield return new WaitForSeconds(1.5f);
-                    if (direc.Count == 1)
-                        break;
-
-            }
-                if (direc[i].Equals(3)) //abajo
-                {
-                    posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z - 0.45f);
-                    rotacionDestino = Quaternion.Euler(car.rotation.x, 180, car.rotation.z);
-                    yield return new WaitForSeconds(1.5f);
-                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                    dir = 3;
-                    nMovimientos += 1;
-                    mover = true;
-                    yield return new WaitForSeconds(1.5f);
-                    if (direc.Count == 1)
-                        break;
-            }
-                if (direc[i].Equals(4)) //izquierda
-                {
-                    posDestino = new Vector3(car.transform.position.x - 0.45f, car.transform.position.y, car.transform.position.z);
-                    rotacionDestino = Quaternion.Euler(car.rotation.x, 270, car.rotation.z);
-                    yield return new WaitForSeconds(1.5f);
-                    Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
-                    dir = 4;
-                    mover = true;
-                    yield return new WaitForSeconds(1.5f);
-                    if (direc.Count == 1)
-                        break;
-            }
-
-                if (direc[i].Equals(5))
-                {
-                    posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * 0.45f), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
-                    yield return new WaitForSeconds(1.5f);
-                    dir = 5;
-                    nMovimientos += 1;
-                    mover = true;
-                    yield return new WaitForSeconds(1.5f);
-                    if (direc.Count == 1)
-                        break;
-
-            }
-                // ESTO SOLO PARA EL STOP. (lvl 4)
-                if ((cc.nivelActual == 8) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel 8 y ha marcado arriba arriba en la 1 y 2 posicion, eso es que no ha esperado en el cruce
-                {
-                    mover = false;
-                    stopSignal = true;
-                    cc.stopDefeat();
+                yield return new WaitForSeconds(1.5f);
+                if (direc.Count == 1)
                     break;
-                }
+
             }
-            mover = false;
+            if (direc[i].Equals(3)) //abajo
+            {
+                posDestino = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z - 0.45f);
+                rotacionDestino = Quaternion.Euler(car.rotation.x, 180, car.rotation.z);
+                yield return new WaitForSeconds(1.5f);
+                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                dir = 3;
+                nMovimientos += 1;
+                mover = true;
+                yield return new WaitForSeconds(1.5f);
+                if (direc.Count == 1)
+                    break;
+            }
+            if (direc[i].Equals(4)) //izquierda
+            {
+                posDestino = new Vector3(car.transform.position.x - 0.45f, car.transform.position.y, car.transform.position.z);
+                rotacionDestino = Quaternion.Euler(car.rotation.x, 270, car.rotation.z);
+                yield return new WaitForSeconds(1.5f);
+                Debug.Log("Ejecutando la posicion: " + i + ":" + direc[i]);
+                dir = 4;
+                mover = true;
+                yield return new WaitForSeconds(1.5f);
+                if (direc.Count == 1)
+                    break;
+            }
+
+            if (direc[i].Equals(5))
+            {
+                posDestinoAuto = new Vector3(cocheAuto.transform.position.x + (3 * 0.45f), cocheAuto.transform.position.y, cocheAuto.transform.position.z);
+                yield return new WaitForSeconds(1.5f);
+                dir = 5;
+                nMovimientos += 1;
+                mover = true;
+                yield return new WaitForSeconds(1.5f);
+                if (direc.Count == 1)
+                    break;
+
+            }
+            // ESTO SOLO PARA EL STOP. (lvl 4)
+            if ((cc.nivelActual == 8) & (direcciones[0].Equals(1)) & (direcciones[1].Equals(1)) & (i == 1)) //Si es el nivel 8 y ha marcado arriba arriba en la 1 y 2 posicion, eso es que no ha esperado en el cruce
+            {
+                mover = false;
+                stopSignal = true;
+                cc.stopDefeat();
+                break;
+            }
+        }
+        mover = false;
         // Comprobar si ha llegado o no al destino.
         if ((direc.Count == 1) & (haGanado == false) & (choque == true) & (stopSignal == false))
         {
@@ -281,7 +263,7 @@ public class Ejecutar : MonoBehaviour
         {
             cc.changeDefeat();
         }
-        
+
 
     }
 }
