@@ -92,7 +92,6 @@
     <None Include="Assets\Resources\Fuentes\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Assets\READ ME.txt" />
     <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
-    <None Include="Assets\StreamingAssets\Vuforia\ARaprendeProgramacion.xml" />
     <None Include="Assets\Scripts\Desenfoque\Blur.shader" />
     <None Include="Assets\Vuforia\Shaders\VideoBackground.shader" />
     <None Include="Assets\Vuforia\Shaders\OutlineOpaque.shader" />
@@ -117,6 +116,7 @@
     <None Include="Assets\Vuforia\Shaders\DepthContour.shader" />
     <None Include="Assets\Resources\Fuentes\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Resources\Fuentes\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\StreamingAssets\Vuforia\ARaprendeProgramacion.xml" />
     <None Include="Assets\Resources\Fuentes\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
     <None Include="Assets\Resources\Fuentes\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
