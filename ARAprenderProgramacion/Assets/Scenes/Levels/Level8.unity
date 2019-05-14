@@ -627,10 +627,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e7809012028a0458680f00d330c9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botonVolver: {fileID: 0}
-  siguienteNivel: {fileID: 0}
-  cc: {fileID: 0}
-  e: {fileID: 0}
+  botonVolver: {fileID: 1002049376}
+  siguienteNivel: {fileID: 355974981}
+  cc: {fileID: 766956427}
+  e: {fileID: 604609413}
 --- !u!65 &104298422
 BoxCollider:
   m_ObjectHideFlags: 0
